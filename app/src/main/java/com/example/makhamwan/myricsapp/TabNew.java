@@ -34,19 +34,23 @@ public class TabNew extends Fragment {
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (url.getText().length()==0) {
+                    Toast.makeText(getActivity().getApplicationContext(), "Please Enter Url", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (title.getText().length()==0) {
+                    Toast.makeText( getActivity().getApplicationContext(), "Please Enter Title", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (artist.getText().length()==0) artist.setText("Unknown");
+                if (album.getText().length()==0) album.setText("Unknown");
+                if (lyric.getText().length()==0) lyric.setText("Unknown");
+
                 final String mUrl = url.getText().toString().trim();
                 final String mTitle = title.getText().toString().trim();
                 final String mArtist = artist.getText().toString().trim();
                 final String mAlbum = album.getText().toString().trim();
                 final String mLyric = lyric.getText().toString();
-                if (mUrl.isEmpty()) {
-                    Toast.makeText( getActivity().getApplicationContext(), "Please Enter Url", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (mTitle.isEmpty()) {
-                    Toast.makeText( getActivity().getApplicationContext(), "Please Enter Title", Toast.LENGTH_SHORT).show();
-                    return;
-                }
 
                 String[] arrays = new String[5];
                 arrays[0] = mUrl;

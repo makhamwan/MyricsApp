@@ -40,8 +40,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(mViewPager);
 
         Firebase.setAndroidContext(this);
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference();
-        mRootRef = new Firebase("https://myricsapp-bf045.firebaseio.com/").child("Songs").push();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://myricsapp-bf045.firebaseio.com/");
 //        mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl("gs://myrics-e3273.appspot.com/");
     }
 
