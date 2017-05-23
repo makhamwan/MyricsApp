@@ -1,9 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.makhamwan.myricsapp.ViewActivity">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    >
 
-</android.support.constraint.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="64px"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Detail"
+                android:textSize="30sp" />
+
+            <View style="@style/Divider"/>
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8px"
+                android:layout_marginRight="8px"
+                android:layout_marginTop="64px"
+                android:lineSpacingExtra="10sp"
+                android:paddingLeft="64px"
+                android:text="Title: Gu Fang Bu Zi Shang"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/artist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8px"
+                android:layout_marginRight="8px"
+                android:lineSpacingExtra="10sp"
+                android:paddingLeft="64px"
+                android:text="Artist: Henry Hou"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/album"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8px"
+                android:layout_marginRight="8px"
+                android:lineSpacingExtra="10sp"
+                android:paddingLeft="64px"
+                android:text="Album: Unknown"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/lyric"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="64px"
+                android:layout_marginLeft="8px"
+                android:layout_marginRight="8px"
+                android:lineSpacingExtra="10sp"
+                android:padding="64px"
+                android:text="Zhe yisheng, wo deng de haochang\nThis life, I waited for so long\nCong mengdong shaonian dao gudu de wang\nFrom an ignorant boy to a lonely duke\nZhe yishi, wo ai de hao shang\nThis lifetime, I loved too much (it hurts)\nRen ni ba jian chajin wo xiongtang\nYou can stab the sword in my chest\nWo de zhanma feita, wei ni ping tianxia\nMy war horses will fly, calming the world for you\nNi de qinxian bo dong, ban wo xia tianya\nYour qin strings will tremble, accompanying me to the end of the world\nYuan wei ni she jiangshan, wei ni xie kaijia\nWilling to forgo the rivers and mountains [meaning the country], remove the armor for you\nYuan qian ni de shou, pei ni dao qingsi bian bai fa\nWilling to hold onto your hand, stay with you until your black hair fades to grey\nGu ao de beiying, yan bu zhu jin suo de mei\nYour aloof back, cannot hide your knitted brows\nFangxiang de yi wen, zhi bu zhu fenggan de lei\nYour fragrant kiss, cannot stop air-dried tears\nBuji de suiyue, su bu wan sinian ru shui\nThose unrestrained years, of endless yearning like water\nZi wen laishi lu, zou bu jin ai de lunhui\nAsked myself which road I took to come here, through endless reincarnations of love\nShang mantian luohua, ru ni xiaoyan xiang sui\nAdmiring the sky studded with falling flowers, as stunning as your smiling face"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
