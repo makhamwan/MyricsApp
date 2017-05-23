@@ -60,8 +60,6 @@ public class TabNew extends Fragment {
                 list_songs.put("artist",mArtist);
                 list_songs.put("album",mAlbum);
                 list_songs.put("lyric",mLyric);
-                list_songs.put("favorite", "false");
-
                 mRootRef.child("song").push().setValue(list_songs);
 
                 Toast.makeText(getActivity().getApplicationContext(), "ADDED NEW SONG", Toast.LENGTH_SHORT).show();

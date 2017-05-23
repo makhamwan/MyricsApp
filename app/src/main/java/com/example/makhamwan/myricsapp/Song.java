@@ -14,7 +14,6 @@ public class Song {
         this.artist = artist;
         this.album = album;
         this.lyric = lyric;
-        Log.d("test","created");
     }
 
     public Song(){}
