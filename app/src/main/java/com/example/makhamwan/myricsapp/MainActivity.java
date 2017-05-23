@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
         Firebase.setAndroidContext(this);
         mDatabaseRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://myricsapp-bf045.firebaseio.com/");
-//        mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl("gs://myrics-e3273.appspot.com/");
     }
 
 
