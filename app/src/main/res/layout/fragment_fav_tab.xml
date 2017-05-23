@@ -53,15 +53,13 @@
                     android:textSize="20sp" />
             </LinearLayout>
 
-            <ListView
-                android:id="@+id/list_view"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycle_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="64px"
-                android:paddingBottom="32px"
-                android:paddingLeft="16px"
-                android:paddingRight="16px"
-                android:paddingTop="32px" />
+                android:layout_marginLeft="64px"
+                android:layout_marginRight="64px"
+                android:padding="64px" />
         </LinearLayout>
     </ScrollView>
 

@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.firebase.client.Firebase;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by makhamwan on 5/17/2017 AD.
@@ -18,7 +20,7 @@ public class TabNew extends Fragment {
 
     private Button add_button;
     private EditText url, title, artist, album, lyric;
-    private Firebase mRootRef = new Firebase("https://myricsapp-bf045.firebaseio.com/").child("Songs").push();
+    private Firebase mRootRef = new Firebase("https://myricsapp-bf045.firebaseio.com/");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,15 +54,14 @@ public class TabNew extends Fragment {
                 final String mAlbum = album.getText().toString().trim();
                 final String mLyric = lyric.getText().toString();
 
-                String[] arrays = new String[5];
-                arrays[0] = mUrl;
-                arrays[1] = mTitle;
-                arrays[2] = mArtist;
-                arrays[3] = mAlbum;
-                arrays[4] = mLyric;
+                Map<String,String> list_songs = new HashMap<String,String>();
+                list_songs.put("url",mUrl);
+                list_songs.put("name",mTitle);
+                list_songs.put("artist",mArtist);
+                list_songs.put("album",mAlbum);
+                list_songs.put("lyric",mLyric);
 
-                Firebase childRef_Song = mRootRef.child("Song");
-                childRef_Song.setValue(arrays);
+                mRootRef.child("song").push().setValue(list_songs);
 
                 Toast.makeText(getActivity().getApplicationContext(), "ADDED NEW SONG", Toast.LENGTH_SHORT).show();
                 add_button.setText("added");
