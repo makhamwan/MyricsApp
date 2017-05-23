@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,10 +87,23 @@ public class TabList extends Fragment {
                     }
                 });
 
+                viewHolder.itemView.findViewById(R.id.fav_button).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        int selectedItems = position;
+                        mFirebaseAdapter.getRef(selectedItems).setValue("");
+                        mFirebaseAdapter.notifyItemChanged(selectedItems);
+                        recyclerView.invalidate();
+                        onStart();
+                    }
+                });
+
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getActivity(), ViewActivity.class);
+                        intent.putExtra("key", mFirebaseAdapter.getRef(position).getKey());
                         startActivity(intent);
                     }
                 });
