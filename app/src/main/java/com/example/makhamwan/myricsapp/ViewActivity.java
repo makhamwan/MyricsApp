@@ -20,7 +20,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ViewActivity extends AppCompatActivity {
 
-    private Button search_button;
     RecyclerView recyclerView;
     DatabaseReference mDatabaseRef;
     private FirebaseRecyclerAdapter<Song, ShowDataViewHolder> mFirebaseAdapter;
@@ -48,15 +47,6 @@ public class ViewActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(ViewActivity.this));
 
         Toast.makeText(this, "Please wait, it is loading ..", Toast.LENGTH_SHORT).show();
-
-        search_button = (Button) findViewById(R.id.search_button);
-        search_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ViewActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     @Override

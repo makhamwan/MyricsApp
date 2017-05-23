@@ -11,7 +11,7 @@
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="200px" >
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:id="@+id/list_item"
@@ -30,18 +30,17 @@
                         android:id="@+id/song_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="16px"
                         android:text="Down to the sea"
-                        android:textSize="20sp" />
+                        android:fontFamily="sans-serif-condensed"
+                        android:textSize="24sp" />
 
                     <TextView
                         android:id="@+id/song_artist"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="32px"
                         android:paddingTop="16px"
                         android:text="Disney"
-                        android:textSize="12sp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 

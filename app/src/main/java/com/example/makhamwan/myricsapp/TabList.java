@@ -1,6 +1,8 @@
 package com.example.makhamwan.myricsapp;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class TabList extends Fragment {
 
-    private Button search_button;
+    private Button search_button, delete_button;
     RecyclerView recyclerView;
     DatabaseReference mDatabaseRef;
     private FirebaseRecyclerAdapter<Song, ShowDataViewHolder> mFirebaseAdapter;
@@ -38,6 +40,7 @@ public class TabList extends Fragment {
         Toast.makeText(getActivity(), "Please wait, it is loading ..", Toast.LENGTH_SHORT).show();
 
         search_button = (Button) v.findViewById(R.id.search_button);
+        delete_button = (Button) v.findViewById(R.id.delete_button);
         search_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,6 +58,60 @@ public class TabList extends Fragment {
             @Override
             protected void populateViewHolder(final ShowDataViewHolder viewHolder, Song model, final int position) {
                 viewHolder.setSong(model.getName(), model.getArtist());
+
+                viewHolder.itemView.findViewById(R.id.delete_button).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        builder.setMessage("Delete?").setCancelable(false)
+                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        int selectedItems = position;
+                                        mFirebaseAdapter.getRef(selectedItems).removeValue();
+                                        mFirebaseAdapter.notifyItemRemoved(selectedItems);
+                                        recyclerView.invalidate();
+                                        onStart();
+                                    }
+                                })
+                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                });
+                        AlertDialog dialog = builder.create();
+                        dialog.setTitle("Are you sure?");
+                        dialog.show();
+                    }
+                });
+
+//                viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                        builder.setMessage("Delete?").setCancelable(false)
+//                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialog, int which) {
+//                                        int selectedItems = position;
+//                                        mFirebaseAdapter.getRef(selectedItems).removeValue();
+//                                        mFirebaseAdapter.notifyItemRemoved(selectedItems);
+//                                        recyclerView.invalidate();
+//                                        onStart();
+//                                    }
+//                                })
+//                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialog, int which) {
+//                                        dialog.cancel();
+//                                    }
+//                                });
+//                        AlertDialog dialog = builder.create();
+//                        dialog.setTitle("Are you sure?");
+//                        dialog.show();
+//                    }
+//                });
             }
         };
 
