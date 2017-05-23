@@ -9,13 +9,19 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.Manifest;
+
+import com.firebase.client.Firebase;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.storage.StorageReference;
+
 public class MainActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
 
-//    private Firebase mRootRef;
-//    private DatabaseReference mDatabaseRef;
-//    private StorageReference mStorageRef;
+    private Firebase mRootRef;
+    private DatabaseReference mDatabaseRef;
+    private StorageReference mStorageRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

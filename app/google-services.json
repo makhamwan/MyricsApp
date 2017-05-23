@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "226694486010",
+    "firebase_url": "https://myricsapp-bf045.firebaseio.com",
+    "project_id": "myricsapp-bf045",
+    "storage_bucket": "myricsapp-bf045.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:226694486010:android:0e24e9946d280808",
+        "android_client_info": {
+          "package_name": "com.example.makhamwan.myricsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "226694486010-460ddbb8qjcmkrt8atulaun9vihdmd9u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.makhamwan.myricsapp",
+            "certificate_hash": "f35759b7290ec944618fda303e1ea24fd7ae1737"
+          }
+        },
+        {
+          "client_id": "226694486010-e2ao4cf3c4em3v9hbtavlkpd3uvu1ens.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbinWvt8vZ7g2oIrHqZ6oSieH3V0h7uaw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "226694486010-e2ao4cf3c4em3v9hbtavlkpd3uvu1ens.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
