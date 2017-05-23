@@ -13,12 +13,13 @@ import android.Manifest;
 
 import com.firebase.client.Firebase;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class MainActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
-
     private Firebase mRootRef;
     private DatabaseReference mDatabaseRef;
     private StorageReference mStorageRef;
@@ -38,19 +39,15 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-//        Firebase.setAndroidContext(this);
-//
-//        mDatabaseRef = FirebaseDatabase.getInstance().getReference();
-//        // .push = not to replace lastest one.
-//        mRootRef = new Firebase("https://myrics-e3273.appspot.com/").child("Songs").push();
+        Firebase.setAndroidContext(this);
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference();
+        mRootRef = new Firebase("https://myricsapp-bf045.firebaseio.com/").child("Songs").push();
 //        mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl("gs://myrics-e3273.appspot.com/");
-
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
@@ -58,12 +55,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -104,8 +98,4 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
     }
-
-//    public StorageReference getStorageRef() {
-//        return this.mStorageRef;
-//    }
 }
