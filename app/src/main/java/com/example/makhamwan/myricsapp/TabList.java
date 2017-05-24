@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +20,6 @@ import com.firebase.client.ValueEventListener;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-import static android.R.drawable.btn_star_big_off;
 
 /**
  * Created by makhamwan on 5/17/2017 AD.
@@ -67,7 +60,7 @@ public class TabList extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot data : dataSnapshot.child("favorite").getChildren()){
                     String favSong = data.getKey();
-                    String nameSong = data.child("key").getValue().toString();
+                    String keySong = data.child("key").getValue().toString();
 
                     mRootRef.child("favorite")
                             .child(favSong)
@@ -75,7 +68,7 @@ public class TabList extends Fragment {
                             .setValue(
                                 dataSnapshot
                                         .child("song")
-                                        .child(nameSong)
+                                        .child(keySong)
                                         .child("name").getValue().toString()
                             );
                     mRootRef.child("favorite")
@@ -84,7 +77,7 @@ public class TabList extends Fragment {
                             .setValue(
                                     dataSnapshot
                                             .child("song")
-                                            .child(nameSong)
+                                            .child(keySong)
                                             .child("artist").getValue().toString()
                             );
                     mRootRef.child("favorite")
@@ -93,7 +86,7 @@ public class TabList extends Fragment {
                             .setValue(
                                     dataSnapshot
                                             .child("song")
-                                            .child(nameSong)
+                                            .child(keySong)
                                             .child("album").getValue().toString()
                             );
                     mRootRef.child("favorite")
@@ -102,7 +95,7 @@ public class TabList extends Fragment {
                             .setValue(
                                     dataSnapshot
                                             .child("song")
-                                            .child(nameSong)
+                                            .child(keySong)
                                             .child("lyric").getValue().toString()
                             );
 
