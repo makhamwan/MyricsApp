@@ -60,7 +60,7 @@
                             android:layout_width="40px"
                             android:layout_height="40px"
                             android:layout_margin="8dp"
-                            android:background="@android:drawable/btn_star_big_off"
+                            android:background="@drawable/unfav"
                             android:padding="16dp" />
 
                         <Button
@@ -68,7 +68,7 @@
                             android:layout_width="40px"
                             android:layout_height="40px"
                             android:layout_margin="8dp"
-                            android:background="@android:drawable/ic_menu_edit"
+                            android:background="@drawable/edit"
                             android:padding="16dp" />
 
                         <Button
