@@ -13,7 +13,7 @@ public class ViewActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseRef;
     private String key;
 
-    private TextView name, artist, album, lyric;
+    private TextView title, name, artist, album, lyric;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,7 @@ public class ViewActivity extends AppCompatActivity {
 
         key = getIntent().getStringExtra("key");
 
+        title = (TextView) findViewById(R.id.text_title);
         name = (TextView) findViewById(R.id.title);
         artist = (TextView) findViewById(R.id.artist);
         album = (TextView) findViewById(R.id.album);
@@ -32,6 +33,7 @@ public class ViewActivity extends AppCompatActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 if(dataSnapshot.getKey().equals("name")){
                     String mName = dataSnapshot.getValue().toString();
+                    title.setText(mName);
                     name.setText( "Title: " + mName);
                 }
                 if(dataSnapshot.getKey().equals("artist")){

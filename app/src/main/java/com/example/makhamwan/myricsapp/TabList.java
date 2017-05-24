@@ -120,13 +120,19 @@ public class TabList extends Fragment {
             @Override
             protected void populateViewHolder(final ShowDataViewHolder viewHolder, Song model, final int position) {
                 if (search_message.length()==0 || model.getName().equalsIgnoreCase(search_message)){
+
+                    if (model.getFavorite().equalsIgnoreCase("true")){
+                        viewHolder.setFav();
+                    }
+
                     viewHolder.setSong(model.getName(), model.getArtist());
                     viewHolder.itemView.findViewById(R.id.fav_button).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            final String mKey = mFirebaseAdapter.getRef(position).getKey();
-                            mRootRef.child("favorite").push().child("key").setValue(mKey);
-                            Toast.makeText(getActivity().getApplicationContext(), "ADDED FAVORITE SONG", Toast.LENGTH_SHORT).show();
+                        final String mKey = mFirebaseAdapter.getRef(position).getKey();
+                        mRootRef.child("favorite").push().child("key").setValue(mKey);
+                        Toast.makeText(getActivity().getApplicationContext(), "ADDED FAVORITE SONG", Toast.LENGTH_SHORT).show();
+                        mRootRef.child("song").child(mKey).child("favorite").setValue("true");
                         }
                     });
 
@@ -188,19 +194,28 @@ public class TabList extends Fragment {
         private final LinearLayout card;
         private final TextView name;
         private final TextView artist;
+        private final Button fav_button;
         public ShowDataViewHolder( final View view){
             super(view);
             name = (TextView) view.findViewById(R.id.song_title);
             artist = (TextView) view.findViewById(R.id.song_artist);
             card = (LinearLayout) view.findViewById(R.id.card);
+            fav_button = (Button) view.findViewById(R.id.fav_button);
+
         }
         public void setSong(String name, String artist){
             this.name.setText(name);
             this.artist.setText(artist);
+
         }
 
         public void hideCard(){
             this.card.setVisibility(View.GONE);
+        }
+
+        public void setFav(){
+            this.fav_button.setBackgroundResource(R.drawable.fav);
+            this.fav_button.setEnabled(false);
         }
     }
 }

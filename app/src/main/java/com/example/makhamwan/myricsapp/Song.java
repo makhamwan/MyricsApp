@@ -6,7 +6,7 @@ import android.util.Log;
  */
 
 public class Song {
-    private String url, name, artist, album, lyric;
+    private String url, name, artist, album, lyric, favorite;
 
     public Song(String url, String name, String artist, String album, String lyric){
         this.url = url;
@@ -56,5 +56,13 @@ public class Song {
 
     public void setLyric(String lyric) {
         this.lyric = lyric;
+    }
+
+    public String getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(String favorite) {
+        this.favorite = favorite;
     }
 }
