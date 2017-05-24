@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -203,7 +202,6 @@ public class TabFav extends Fragment {
                 }
             }
         };
-
         recyclerView.setAdapter(mFirebaseAdapter);
     }
 

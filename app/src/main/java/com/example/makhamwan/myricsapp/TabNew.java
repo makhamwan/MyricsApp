@@ -1,6 +1,8 @@
 package com.example.makhamwan.myricsapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 import com.firebase.client.Firebase;
 import java.util.HashMap;
 import java.util.Map;
+import android.app.SearchManager;
 
 /**
  * Created by makhamwan on 5/17/2017 AD.
@@ -18,19 +21,30 @@ import java.util.Map;
 
 public class TabNew extends Fragment {
 
-    private Button add_button;
-    private EditText url, title, artist, album, lyric;
+    private Button add_button, search_button;
+    private EditText search, url, title, artist, album, lyric;
     private Firebase mRootRef = new Firebase("https://myricsapp-bf045.firebaseio.com/");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_new_tab, container, false);
+        search = (EditText) v.findViewById(R.id.search);
         url = (EditText) v.findViewById(R.id.url);
         title = (EditText) v.findViewById(R.id.title);
         artist = (EditText) v.findViewById(R.id.artist);
         album = (EditText) v.findViewById(R.id.album);
         lyric = (EditText) v.findViewById(R.id.lyric);
+
+        search_button = (Button) v.findViewById(R.id.search_button);
+
+        search_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Test", "search ?");
+                onSearchClick(v);
+            }
+        });
 
         add_button = (Button) v.findViewById(R.id.add_button);
         add_button.setOnClickListener(new View.OnClickListener() {
@@ -67,5 +81,16 @@ public class TabNew extends Fragment {
             }
         });
         return v;
+    }
+
+    public void onSearchClick(View v) {
+        try {
+            Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
+            String term = search.getText().toString();
+            intent.putExtra(SearchManager.QUERY, term);
+            startActivity(intent);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
     }
 }
