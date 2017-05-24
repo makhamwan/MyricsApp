@@ -120,21 +120,33 @@ public class TabList extends Fragment {
             @Override
             protected void populateViewHolder(final ShowDataViewHolder viewHolder, Song model, final int position) {
                 if (search_message.length()==0 || model.getName().equalsIgnoreCase(search_message)){
+                    viewHolder.setSong(model.getName(), model.getArtist());
 
                     if (model.getFavorite().equalsIgnoreCase("true")){
                         viewHolder.setFav();
+                        viewHolder.itemView.findViewById(R.id.fav_button).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                final String mKey = mFirebaseAdapter.getRef(position).getKey();
+                                mRootRef.child("favorite").push().child("key").setValue(mKey);
+                                Toast.makeText(getActivity().getApplicationContext(), "ADDED FAVORITE SONG", Toast.LENGTH_SHORT).show();
+                                mRootRef.child("song").child(mKey).child("favorite").setValue("false");
+                            }
+                        });
                     }
 
-                    viewHolder.setSong(model.getName(), model.getArtist());
-                    viewHolder.itemView.findViewById(R.id.fav_button).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                        final String mKey = mFirebaseAdapter.getRef(position).getKey();
-                        mRootRef.child("favorite").push().child("key").setValue(mKey);
-                        Toast.makeText(getActivity().getApplicationContext(), "ADDED FAVORITE SONG", Toast.LENGTH_SHORT).show();
-                        mRootRef.child("song").child(mKey).child("favorite").setValue("true");
-                        }
-                    });
+                    else {
+                        viewHolder.setUnFav();
+                        viewHolder.itemView.findViewById(R.id.fav_button).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                final String mKey = mFirebaseAdapter.getRef(position).getKey();
+                                mRootRef.child("favorite").push().child("key").setValue(mKey);
+                                Toast.makeText(getActivity().getApplicationContext(), "ADDED FAVORITE SONG", Toast.LENGTH_SHORT).show();
+                                mRootRef.child("song").child(mKey).child("favorite").setValue("true");
+                            }
+                        });
+                    }
 
                     viewHolder.itemView.findViewById(R.id.edit_button).setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -215,7 +227,10 @@ public class TabList extends Fragment {
 
         public void setFav(){
             this.fav_button.setBackgroundResource(R.drawable.fav);
-            this.fav_button.setEnabled(false);
+        }
+
+        public void setUnFav(){
+            this.fav_button.setBackgroundResource(R.drawable.unfav);
         }
     }
 }
